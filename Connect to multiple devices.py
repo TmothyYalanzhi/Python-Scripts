@@ -1,0 +1,28 @@
+from netmiko import Netmiko
+from getpass import getpass
+
+host1 = {
+    "host": "Switch1",    # Enter Hostname or IP of device here
+    "username": "username",   # Enter your username
+    "password": getpass(),
+    "device_type": "cisco_ios",
+    "global_delay_factor": 0.1
+}
+
+host2 = {
+    "host": "Switch2",   # Enter Hostname or IP of device here
+    "username": "username",   # Enter your username
+    "password": getpass(),
+    "device_type": "cisco_ios",
+    "global_delay_factor": 0.1
+}
+
+
+devices = [host1, host2]
+
+for host in devices:
+    net_connect = Netmiko(**host)
+    command = "show ip int brief"    # Enter any command here
+    show_output = net_connect.send_command(command)
+    net_connect.disconnect()
+    print(show_output)
