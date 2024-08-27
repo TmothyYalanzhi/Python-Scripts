@@ -52,8 +52,7 @@ if __name__ == "__main__":
     show_commands = get_show_commands()
     
     # Switch details
-    # username = credfile.username
-    # password = credfile.password
+
     username = input("Enter your username: ")
     password = getpass.getpass("Enter your password: ")
     
